@@ -97,9 +97,7 @@ def simple_namegen(minsyl = 1, maxsyl = 3, n = 1):
 
 def web_namegen(minsyl = 1, maxsyl = 3, n = 1):
     """Grab a randgen name from dicelog.com"""
-    import xmlrpclib
-    proxy = xmlrpclib.ServerProxy("http://dicelog.com/yaf/rpc")
-    return proxy.names(minsyl, maxsyl, n)
+    return 'the young'
     
 ###A syllable agglutinator namegen for dragons
 

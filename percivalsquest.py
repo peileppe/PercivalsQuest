@@ -50,9 +50,9 @@ def town(rpg):
         goto = choose_from_list("Town> ", destinations, rand=False,
             character=rpg.character, allowed=["sheet","help","equip"])
         if goto == "Home":
-            send_to_console("You hit the sack. Once you've annoyed all " \
-                "the bedbugs with your ineffectual fists, "\
-                "you lay down and sleep.")
+            send_to_console("You returned home to rest," \
+                " game is saved "\
+                "  - you had a good nigth sleep.")
             rpg.character.sleep()
             save(rpg)
             continue
