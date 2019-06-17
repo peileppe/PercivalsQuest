@@ -8,6 +8,7 @@ and the library for calling them by name.
 #  part of Percival's Quest RPG
 
 from pq_utilities import atk_roll, send_to_console
+from pq_log import logger
 import random
 
 pq_reverse_stats = {0:"Attack", 1:"Defense", 2:"Reflexes",
@@ -27,6 +28,7 @@ def pq_smite(user, target):
 def pq_cure(user, target):
     """Perform a Cure (healing 1dSkill + level), 
     followed by a normal attack."""
+    logger.debug(user.name, target.name)
     cure = random.randint(1, user.stats[5] + \
         user.temp['stats'].get("Skill", 0)) + user.level[1]
     user.cure(cure)
