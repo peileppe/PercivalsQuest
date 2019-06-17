@@ -28,14 +28,14 @@ def pq_smite(user, target):
 def pq_cure(user, target):
     """Perform a Cure (healing 1dSkill + level), 
     followed by a normal attack."""
-    logger.debug(user.name, target.name)
+    logger.debug(user.name)
     cure = random.randint(1, user.stats[5] + \
         user.temp['stats'].get("Skill", 0)) + user.level[1]
     user.cure(cure)
     hit = atk_roll(user.combat['atk'], target.combat['dfn'], \
         user.temp['stats'].get("Attack", 0), \
         target.temp['stats'].get("Defense", 0))
-    targstring = "You are " if hasattr(user,"player") else "The monster is " 
+    targstring = "You are " if (len(user.name) > 1) else "The monster is " 
     send_to_console(targstring+"cured for "+str(cure)+" hp! An attack follows.")
     return (hit > 0, hit)
 
