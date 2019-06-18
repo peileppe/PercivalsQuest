@@ -116,7 +116,7 @@ def get_user_input(prompt, character = None, options = ["Quit"]):
     return user_input
 
 def send_to_console(*output):
-    sleep(0.5)
+    #sleep(0.5)
     print ''.join(output)
 
 def pq_help():

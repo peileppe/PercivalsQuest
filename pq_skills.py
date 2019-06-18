@@ -261,7 +261,6 @@ def pq_burn(user, target):
         user.temp['stats'].get("Attack", 0), \
         target.temp['stats'].get("Reflexes", 0))
     if hit > 0 and "burning" not in target.temp['condition']:
-        
         targstring = "The monster is " if hasattr(user, "gear") \
             else "You are "
         send_to_console(targstring + "burning!")
