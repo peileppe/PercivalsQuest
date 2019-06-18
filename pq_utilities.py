@@ -150,11 +150,7 @@ class color:
     END = '\033[0m'
     
 
-prefix = ""
-from platform import system
-if system() in ['Linux', 'Darwin', 'Unix']:
-    prefix = "."
-savefile = os.path.expanduser("~/"+prefix+"pq_saves")
+savefile = os.path.expanduser("./saves/pq_saves")
 
 def save(rpg):
     """Save it, baby!"""

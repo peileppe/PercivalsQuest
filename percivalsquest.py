@@ -51,7 +51,7 @@ def town(rpg):
             character=rpg.character, allowed=["sheet","help","equip"])
         if goto == "Home":
             send_to_console("You returned home," \
-                +color.UNDERLINE+" game is saved "+color.END+\
+                +color.BOLD+" game is saved "+color.END+\
                 "- you had a good nigth sleep.")
             rpg.character.sleep()
             save(rpg)
