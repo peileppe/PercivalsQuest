@@ -177,7 +177,7 @@ class PQ_RPG(object):
                     str(self.dungeonlevel) + " a little while longer.")
             return
         elif room > 2 and room <= 5:
-            msg = color.GREEN+"You found a chest! "+color.END
+            msg = color.BOLD+"You found a chest! "+color.END
             chest = pq_treasuregen(self.dungeonlevel)
             self.character.defeat_enemy(0, chest)
             loot = []
@@ -192,7 +192,7 @@ class PQ_RPG(object):
             if not loot:
                 msg += "Sadly, it was empty."
             else:
-                msg += "Inside, you find "+color.GREEN + ", ".join(loot) + "."+color.END
+                msg += "Inside, you find "+color.BOLD+ ", ".join(loot) + "."+color.END
             send_to_console(msg)
             return
         elif room > 5 and room <= 8:
@@ -220,14 +220,14 @@ class PQ_RPG(object):
                 < cutoff:
                 self.combat = PQ_Combat(self.dungeonlevel, self.character, \
                     self.quest)
-                msg += color.GREEN+self.quest.name+color.END+'!'
+                msg += color.BOLD+self.quest.name+color.END+'!'
             else: 
                 self.combat = PQ_Combat(self.dungeonlevel, \
                     self.character, None)
                 if self.dungeonlevel >= 10:
                     msg += color.RED+self.combat.enemy.name +color.END+'!'
                 else:
-                    msg += 'a ' + color.UNDERLINE+self.combat.enemy.name +color.END+'!'
+                    msg += 'a ' + color.BOLD+self.combat.enemy.name +color.END+'!'
             if self.combat.turnorder[0] == 'player':
                 msg += ' You get the jump on it.'
             else:

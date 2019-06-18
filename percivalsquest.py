@@ -99,7 +99,7 @@ def dungeon(rpg):
                 continue
             else:
                 rpg.destination("town")
-                send_to_console("You return back"+color.DARKCYAN+" to town."+color.END)
+                send_to_console("You return back"+color.BOLD+" to town."+color.END)
                 continue
         elif dothis == "Backtrack":
             if rpg.whereareyou == "start":
