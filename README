@@ -7,30 +7,56 @@ To start the game, simply navigate to the proper directory and:
 
 command_line$ python percivalsquest.py
 
-
 TO DO:
-~Add to bestiary
 ~Add passive skills
 ~Add potions
 ~Add traps
 ~Add story elements & minigames
 ~Add achievements
 
-UPDATE:
-I've added colorama to handle output of bold and colored text, even on Windows machines.
 
-the young (Player: brenan)
-Gnome Wizard 20
-Atk 4 Def 6 Ref 29 Frt 4 Mnd 16 Skl 12; hp 75/75; sp 48/48; exp 5/200
-ImprovedInitiative, IronWill x4, LightningReflexes x12, PowerAttack,
-Prodigy, StoutDefense
-Skills: Missile, Cure; Armor: Enchanted Djellaba (8); Weapon: Dolorous Greatclub (7); Ring: Regeneration
-67659 gp; loot: Animated Chain x2, Ring of Basilisk, Bolero, Chain x2,
-Chainmail, Cleaver x2, Club x2, Enchanted Sack, Ring of Glibness, Hide
-x2, Impactful Truncheon, Ring of Intimidation, Jerkin, Keen Machete,
-Keen Rapier, Lunging Spear, Masterwork Greatclub, Masterwork Machete,
-Masterwork Sap, Masterwork Shirt, Masterwork Splintmail x2, Masterwork
-Vestment x2, Mithril Scalemail, Quarterstaff x3, Rapier, Robes, Sack,
-Sap x2, Shirt, Ring of Speed, Ring of Subtlety x2, Thistledown Padded,
-Vestment, Ring of Webs
+$ python percivalsquest.py 
 
+   ()    
+   )(     
+o======o           
+   ||              
+   ||    ___              _            _ _        ____                 _    
+   ||   / _ \___ _ __ ___(_)_   ____ _| ( )__    /___ \_   _  ___  ___| |_ 
+   ||  / /_)/ _ \ '__/ __| \ \ / / _` | |/ __|  //  / / | | |/ _ \/ __| __| 
+   || / ___/  __/ | | (__| |\ V / (_| | |\__ \ / \_/ /| |_| |  __/\__ \ |_ 
+   || \/    \___|_|  \___|_| \_/ \__,_|_||___/ \___,_\ \__,_|\___||___/\__| 
+   ||                                                                     
+   ||                            copyright 2013
+   || 
+   \/ 
+
+
+Welcome to Percival's Quest! This is a solo random dungeoncrawl rpg
+written in python by the ever-resourceful (and extremely humble)
+sirpercival.
+Please enter your player name> jim
+Welcome, jim! You currently have a game saved. Would you like to load it?
+Load (y/n)> y
+Game successfully loaded.
+the young (Player: jim)
+Elf Wizard 1
+Atk 2 Def 3 Ref 10 Frt 5 Mnd 8 Skl 7; hp 5/5; sp 7/7; exp 0/10
+LightningReflexes
+Skills: Missile; Armor: Barrel (0); Weapon: Rope (0); Ring: None
+0 gp; loot: None
+
+You begin in the town square.  (Please note that at almost any prompt,
+you can choose Sheet to look at your charsheet, Equip to change your
+equipment, Help to enter the help library, or Quit to quit.)
+To the East is your humble abode and warm bed; to the North, the
+General Store where various and sundry goods may be purchased; to the
+West, the Cityhall where the mayor makes his office; to the Northwest,
+the local Temple to the Unknowable Gods; and to the South lie the
+gates of the city, leading out to the Dungeon.
+Where would you like to go?
+Options: Home, Cityhall, Bazaar, Temple, or Dungeon [Level#] (max 1)
+Town> 
+BAZAAR     Cityhall   Dungeon    Equip      Help       QUIT       SHEET      Temple     dungeon    help       quit       
+Bazaar     DUNGEON    Dungeon 1  HELP       Home       Quest      Sheet      bazaar     dungeon 1  home       sheet      
+CITYHALL   DUNGEON 1  EQUIP      HOME       QUEST      Quit       TEMPLE     cityhall   equip      quest      temple  

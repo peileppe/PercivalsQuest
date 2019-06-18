@@ -7,7 +7,7 @@ for managing... y'know... combat.
 #  part of Percival's Quest RPG
 
 from pq_enemies import PQ_Enemy, pq_dragonskill
-from pq_utilities import choose_from_list, atk_roll, send_to_console
+from pq_utilities import choose_from_list, atk_roll, send_to_console, color
 from pq_skills import pq_skill_library as pqsl
 #from pq_equipment import *
 import random, textwrap
@@ -56,12 +56,12 @@ class PQ_Combat(object):
         """Handle if somebody takes damage."""
         target.ouch(dmg)
         if target == self.char:
-            send_to_console("Ouch! You're bleeding, maybe a lot. You take " + str(dmg) \
+            send_to_console(color.BOLD+"Ouch! You're bleeding, maybe a lot. You take " + str(dmg) \
                 + " damage, and have "+ str(target.hitpoints[0]) + \
-                " hit points remaining.")
+                " hit points remaining."+color.END)
         else:
-            send_to_console("A hit! A very palpable hit! You deal " + str(dmg) + \
-                " damage.")
+            send_to_console(color.BOLD+"A hit! A very palpable hit! You deal " + str(dmg) + \
+                " damage."+color.END)
         if target.hitpoints[0] <= 0:
             self.death(target)
             return True
@@ -78,7 +78,7 @@ class PQ_Combat(object):
             self.done = True
             return
         if target == self.enemy:
-            send_to_console('You have defeated the ' + self.enemy.name + '!')
+            send_to_console(color.BOLD+'You have defeated the ' + self.enemy.name + '!'+color.END)
             self.win_combat()
             return
         
@@ -135,9 +135,9 @@ class PQ_Combat(object):
         the player wins the combat."""
         self.char.defeat_enemy(self.enemy.level[1], self.enemy.treasure)
         exp = self.enemy.level[1]
-        send_to_console('You receive ' + str(exp) + ' experience.')
+        send_to_console(color.BOLD+'You receive ' + str(exp) + ' experience.'+color.END)
         treasure = self.enemy.treasure
-        msg = "In the monster's pockets, you find: "
+        msg = "In the monster's lair, you find: "
         loot = []
         for i in treasure.keys():
             if treasure[i]:
@@ -188,8 +188,8 @@ class PQ_Combat(object):
     def pc_turn(self):
         """The player takes his/her turn. Joy."""
         if self.char.skillpoints[0] > 0:
-            msg = "Attack, " + ", ".join(self.char.skill) + \
-                ", Run Away, or Equip?"
+            msg = color.BOLD+"Attack, " + ", ".join(self.char.skill) + \
+                ", Run Away, or Equip?"+color.END
             available = self.char.skill + ["Attack", "Run Away", "Equip"]
         else:
             msg = "You are out of skill points! Attack, Run Away, or Equip?"
@@ -231,7 +231,7 @@ class PQ_Combat(object):
             avail_skills.remove('Poison')
             skills_ok.append(self.enemy.skill in avail_skills)
         if sum(skills_ok) and skillcheck1:
-            send_to_console("The enemy uses "+self.enemy.skill+"!")
+            send_to_console("The enemy uses "+color.UNDERLINE+self.enemy.skill+color.END+"!")
             self.enemy.reset_skillcounter()
             self.use_skill(self.enemy.skill, self.enemy, self.char)
         else:

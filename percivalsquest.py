@@ -38,12 +38,12 @@ def town(rpg):
     """Maintain interactions with the town of North Granby."""
     while True:
         if rpg.character.dead:
-            send_to_console("You are dead!")
+            send_to_console(color.BOLD+"You are dead!"+color.END)
             deadchar(rpg)
             break
-        send_to_console("Where would you like to go?\n"+"Options: Home, " \
+        send_to_console("Where would you like to go?\n"+color.BOLD+"Options: Home, " \
             "Cityhall, Bazaar, Temple, or Dungeon [Level#] (max "+ \
-            str(rpg.maxdungeonlevel)+")")
+            str(rpg.maxdungeonlevel)+")"+color.END)
         destinations = ["Dungeon", "Home", "Cityhall", "Quest", \
             "Bazaar", "Temple"] + ["Dungeon "+str(i) for i in \
             range(1, rpg.maxdungeonlevel+1)]
@@ -51,7 +51,7 @@ def town(rpg):
             character=rpg.character, allowed=["sheet","help","equip"])
         if goto == "Home":
             send_to_console("You returned home," \
-                " game is saved "\
+                +color.UNDERLINE+" game is saved "+color.END+\
                 "- you had a good nigth sleep.")
             rpg.character.sleep()
             save(rpg)
@@ -88,7 +88,7 @@ def dungeon(rpg):
         actions = ["Research","Leave"] if rpg.whereareyou == "start" \
             else ["Research","Backtrack"]
         send_to_console("You're in the dank dark dungeon. What do you want to do?\n"+\
-            "Options: "+", ".join(actions))
+            "Options: "+color.BOLD+", ".join(actions)+color.END)
         dothis = choose_from_list("Dungeon> ", actions, rand=False,
             character=rpg.character, allowed=["sheet","help","equip"])
         if dothis == "Leave":
@@ -99,12 +99,11 @@ def dungeon(rpg):
                 continue
             else:
                 rpg.destination("town")
-                send_to_console("You head back to town.")
+                send_to_console("You return back"+color.DARKCYAN+" to town."+color.END)
                 continue
         elif dothis == "Backtrack":
             if rpg.whereareyou == "start":
-                send_to_console("You're already at the beginning of the level, " \
-                    "Captain Redundant.")
+                send_to_console("You're already at the beginning of the level.")
                 continue
             if rpg.check_backtrack():
                 send_to_console("You successfully find your way back " \
