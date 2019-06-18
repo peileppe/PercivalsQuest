@@ -42,25 +42,25 @@ def town(rpg):
             deadchar(rpg)
             break
         send_to_console("Where would you like to go?\n"+"Options: Home, " \
-            "Questhall, Shop, Temple, or Dungeon [Level#] (max "+ \
+            "Cityhall, Bazaar, Temple, or Dungeon [Level#] (max "+ \
             str(rpg.maxdungeonlevel)+")")
-        destinations = ["Dungeon", "Home", "Questhall", "Quest", \
-            "Shop", "Temple"] + ["Dungeon "+str(i) for i in \
+        destinations = ["Dungeon", "Home", "Cityhall", "Quest", \
+            "Bazaar", "Temple"] + ["Dungeon "+str(i) for i in \
             range(1, rpg.maxdungeonlevel+1)]
         goto = choose_from_list("Town> ", destinations, rand=False,
             character=rpg.character, allowed=["sheet","help","equip"])
         if goto == "Home":
             send_to_console("You returned home," \
                 " game is saved "\
-                "  - you had a good nigth sleep.")
+                "- you had a good nigth sleep.")
             rpg.character.sleep()
             save(rpg)
             continue
-        elif goto in ["Questhall", "Quest"]:
-            send_to_console("You head to the Questhall.")
+        elif goto in ["Cityhall", "Quest"]:
+            send_to_console("You head to the Cityhall.")
             rpg.questhall()
             continue
-        elif goto == "Shop":
+        elif goto == "Bazaar":
             send_to_console("You head into the shop.")
             rpg.visit_shop()
             continue
@@ -85,8 +85,8 @@ def dungeon(rpg):
     while dothis != "Leave":
         if rpg.character.dead:
             return
-        actions = ["Explore","Leave"] if rpg.whereareyou == "start" \
-            else ["Explore","Backtrack"]
+        actions = ["Research","Leave"] if rpg.whereareyou == "start" \
+            else ["Research","Backtrack"]
         send_to_console("You're in the dank dark dungeon. What do you want to do?\n"+\
             "Options: "+", ".join(actions))
         dothis = choose_from_list("Dungeon> ", actions, rand=False,
@@ -117,7 +117,7 @@ def dungeon(rpg):
                 rpg.destination("dungeon")
                 rpg.explore()
                 continue
-        elif dothis == "Explore":
+        elif dothis == "Research":
             rpg.destination("dungeon")
             rpg.explore()
             if rpg.character.dead:
@@ -203,7 +203,7 @@ def main():
     send_to_console(textwrap.fill(msg))
     msg = "To the East is your humble abode and warm bed; " \
         "to the North, the General Store where various and sundry goods " \
-        "may be purchased; to the West, the Questhall where the mayor " \
+        "may be purchased; to the West, the Cityhall where the mayor " \
         "makes his office; to the Northwest, the local Temple to the " \
         "Unknowable Gods; and to the South lie the gates of the city, " \
         "leading out to the Dungeon."
