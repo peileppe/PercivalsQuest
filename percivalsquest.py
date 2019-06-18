@@ -42,15 +42,15 @@ def town(rpg):
             deadchar(rpg)
             break
         send_to_console("Where would you like to go?\n"+"Options: Home, " \
-            "Questhall, Shop, Shrine, or Dungeon [Level#] (max "+ \
+            "Questhall, Shop, Temple, or Dungeon [Level#] (max "+ \
             str(rpg.maxdungeonlevel)+")")
         destinations = ["Dungeon", "Home", "Questhall", "Quest", \
-            "Shop", "Shrine"] + ["Dungeon "+str(i) for i in \
+            "Shop", "Temple"] + ["Dungeon "+str(i) for i in \
             range(1, rpg.maxdungeonlevel+1)]
         goto = choose_from_list("Town> ", destinations, rand=False,
             character=rpg.character, allowed=["sheet","help","equip"])
         if goto == "Home":
-            send_to_console("You returned home to rest," \
+            send_to_console("You returned home," \
                 " game is saved "\
                 "  - you had a good nigth sleep.")
             rpg.character.sleep()
@@ -64,8 +64,8 @@ def town(rpg):
             send_to_console("You head into the shop.")
             rpg.visit_shop()
             continue
-        elif goto == "Shrine":
-            send_to_console("You head into the Shrine.")
+        elif goto == "Temple":
+            send_to_console("You head into the Temple.")
             rpg.visit_shrine()
             continue
         else:
@@ -204,7 +204,7 @@ def main():
     msg = "To the East is your humble abode and warm bed; " \
         "to the North, the General Store where various and sundry goods " \
         "may be purchased; to the West, the Questhall where the mayor " \
-        "makes his office; to the Northwest, the local Shrine to the " \
+        "makes his office; to the Northwest, the local Temple to the " \
         "Unknowable Gods; and to the South lie the gates of the city, " \
         "leading out to the Dungeon."
     send_to_console(textwrap.fill(msg))
