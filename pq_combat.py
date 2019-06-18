@@ -154,7 +154,7 @@ class PQ_Combat(object):
             loot = "Nothing!"
         else:
             loot = ', '.join(loot) + '.'
-        send_to_console(msg + loot)
+        send_to_console(msg + color.BOLD+ loot+color.END)
         if self.char.level[0] >= self.char.level[1] * 10:
             self.char.levelup()
         self.done = True
