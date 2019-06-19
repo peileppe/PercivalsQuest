@@ -199,7 +199,7 @@ def pq_confusion(user, target):
             + " skill points!")
         target.huh(damage)
     return (affect > 0, 0)
-    
+
 def pq_evade(user, target):
     """Buff self with an Evade (+Skill to Defense)"""
     targstring = "You feel " if hasattr(user, "gear") \
@@ -207,7 +207,7 @@ def pq_evade(user, target):
     send_to_console(targstring + "more evasive!")
     user.temp_bonus(["Defense"], user.stats[5], 4)
     return (True, 0)
-    
+
 def pq_acidspray(user, target):
     """Perform an Acidspray -- Fort vs Def, full damage
     + 1/2 damage as Def debuff for 2 rounds"""
@@ -221,7 +221,7 @@ def pq_acidspray(user, target):
         send_to_console(targstring + "sprayed with acid!")
         target.temp_bonus(["Defense"], debuff, 4)
     return (hit > 0, hit)
-    
+
 def pq_telekinesis(user, target):
     """Perform a TK (Skill vs Ref); if successful, enemy attacks self"""
     affect = atk_roll([0, user.stats[5]], [0, target.stats[3]], \
@@ -237,7 +237,7 @@ def pq_telekinesis(user, target):
         send_to_console(targstring + "manipulated, and attack" + targstring2)
         return (hit > 0, hit)
     return (affect > 0, 0)
-    
+
 def pq_prismspray(user, target):
     """Perform a Prismatic Spray (Skill vs random stat
     to debuff that stat"""
@@ -253,7 +253,7 @@ def pq_prismspray(user, target):
         send_to_console(targstring + effectstring[statpick] + "!")
         target.temp_bonus([pq_reverse_stats[statpick]], -affect, 4)
     return (affect > 0, 0)
-    
+
 def pq_burn(user, target):
     """Perform a Burn (Atk vs Ref, applies Burning condition which
     re-calls the skill each turn for 1dSkill turns."""
@@ -266,7 +266,7 @@ def pq_burn(user, target):
         send_to_console(targstring + "burning!")
         target.temp['condition']["burning"] = 4
     return (hit > 0, hit)
-    
+
 def pq_leech(user, target):
     """Perform a Leech -- a single attack which 
     cures for half the damage it deals, up to Skill"""
@@ -280,7 +280,7 @@ def pq_leech(user, target):
         send_to_console(targstring + str(cure) + " hit points!")
         user.cure(cure)
     return (hit > 0, hit)
-    
+
 #TIME FOR THE PASSIVE SKILLS!
 
 def pq_bardicknowledge(user, target):

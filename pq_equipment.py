@@ -33,7 +33,7 @@ def pq_item_type(item):
         for j in gear_list:
             if i.lower() == j[0].lower():
                 return j[1:]
-                    
+
 def pq_item_rating(itemtype, item):
     """Determine the rating of the weapon or armor"""
     itemsplit = item.split()
@@ -42,7 +42,7 @@ def pq_item_rating(itemtype, item):
         rating += pq_gear[itemtype[0]][itemtype[1]].get(i, 0) + \
             pq_magic[itemtype[0]][itemtype[1]].get(i, 0)
     return rating
-    
+
 def pq_item_worth(item):
     """Determine the value of the item at the General Store"""
     itemtype = pq_item_type(item)
