@@ -42,9 +42,9 @@ def town(rpg):
             deadchar(rpg)
             break
         send_to_console("Where would you like to go?\n"+color.BOLD+"Options: Home, " \
-            "Cityhall, Bazaar, Temple, or Dungeon [Level#] (max "+ \
+            "City-Hall, Bazaar, Temple, or Dungeon [Level#] (max "+ \
             str(rpg.maxdungeonlevel)+")"+color.END)
-        destinations = ["Dungeon", "Home", "Cityhall", "Quest", \
+        destinations = ["Dungeon", "Home", "City-Hall", "Quest", \
             "Bazaar", "Temple"] + ["Dungeon "+str(i) for i in \
             range(1, rpg.maxdungeonlevel+1)]
         goto = choose_from_list("Town> ", destinations, rand=False,
@@ -56,8 +56,8 @@ def town(rpg):
             rpg.character.sleep()
             save(rpg)
             continue
-        elif goto in ["Cityhall", "Quest"]:
-            send_to_console("You head to the Cityhall.")
+        elif goto in ["City-Hall", "Quest"]:
+            send_to_console("You head to the City-Hall.")
             rpg.questhall()
             continue
         elif goto == "Bazaar":
@@ -202,7 +202,7 @@ def main():
     send_to_console(textwrap.fill(msg))
     msg = "To the East is your humble abode and warm bed; " \
         "to the North, the General Store where various and sundry goods " \
-        "may be purchased; to the West, the Cityhall where the mayor " \
+        "may be purchased; to the West, the City-Hall where the mayor " \
         "makes his office; to the Northwest, the local Temple to the " \
         "Unknowable Gods; and to the South lie the gates of the city, " \
         "leading out to the Dungeon."
