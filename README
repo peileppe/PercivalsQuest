@@ -56,7 +56,7 @@ the local Temple to the Unknowable Gods; and to the South lie the
 gates of the city, leading out to the Dungeon.
 Where would you like to go?
 Options: Home, Cityhall, Bazaar, Temple, or Dungeon [Level#] (max 1)
-Town> 
+Town>  <tab> <tab>
 BAZAAR     Cityhall   Dungeon    Equip      Help       QUIT       SHEET      Temple     dungeon    help       quit       
 Bazaar     DUNGEON    Dungeon 1  HELP       Home       Quest      Sheet      bazaar     dungeon 1  home       sheet      
 CITYHALL   DUNGEON 1  EQUIP      HOME       QUEST      Quit       TEMPLE     cityhall   equip      quest      temple  
