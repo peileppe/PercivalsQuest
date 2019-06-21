@@ -8,12 +8,12 @@ for Percival's Quest RPG
 
 import json, textwrap, random, shelve, os
 from time import sleep
+
 readl = True
 try:
     import readline
 except ImportError:
     readl = False
-    
 
 def collapse_stringlist(thelist, sortit = False, addcounts = False):
     """Remove duplicate elements from a list, 
@@ -31,7 +31,6 @@ def collapse_stringlist(thelist, sortit = False, addcounts = False):
         tag = ' x'+str(count) if count > 1 else ''
         collapsed[j] += tag
     return collapsed
-
 
 def atk_roll(attack, defense, attack_adjust = 0, defense_adjust = 0):
     """Handle any opposed roll ('attack' roll)."""
@@ -149,7 +148,6 @@ class color:
     UNDERLINE = '\033[4m'
     END = '\033[0m'
     
-
 savefile = os.path.expanduser("./saves/pq_saves")
 
 def save(rpg):
@@ -161,7 +159,7 @@ def save(rpg):
 def load(rpg):
     """Load it, baby!"""
     savedb = shelve.open(savefile)
-    print(savedb.keys())
+    print('Saved Games:',savedb.keys())
     if rpg.player_name not in savedb:
         savedb.close()
         return None
