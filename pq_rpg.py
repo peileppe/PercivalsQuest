@@ -38,6 +38,10 @@ def display_itemlist(itemlist, sell = False):
 class PQ_RPG(object):
     """RPG instance declaration"""
     def __init__(self, player):
+        def dict_return(pq):
+            k=list(pq)
+            random.shuffle(k)
+            return k[0]
         """Initialize the game session."""
         self.character = PQ_Character(self)
         self.player_name = player
@@ -46,8 +50,10 @@ class PQ_RPG(object):
         self.maxdungeonlevel = 1
         self.quest = {}
         self.store = [
-            pq_gear['rarmor'][random.choice(pq_gear['rarmor'].keys())]['0'],
-            pq_gear['rweapon'][random.choice(pq_gear['rweapon'].keys())]['0']
+            #pq_gear['rarmor'][random.choice(pq_gear['rarmor'].keys())]['0'],
+            dict_return(pq_gear['rarmor']),
+            #pq_gear['rweapon'][random.choice(pq_gear['rweapon'].keys())]['0']
+            dict_return(pq_gear['rweapon'])
             ]
         self.whereareyou = "Town"
         self.shrinexp = 0

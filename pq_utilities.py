@@ -15,6 +15,11 @@ try:
 except ImportError:
     readl = False
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 def collapse_stringlist(thelist, sortit = False, addcounts = False):
     """Remove duplicate elements from a list, 
     possibly sorting it in the process."""
@@ -49,19 +54,23 @@ def atk_roll(attack, defense, attack_adjust = 0, defense_adjust = 0):
 def confirm_quit():
     """Do you really want to quit? DO YA, PUNK???"""
     send_to_console("Remember that your last save was the last time you rested.")
-    choice = raw_input("Are you sure you want to quit (y/n)? ")
+    choice = input("Are you sure you want to quit (y/n)? ")
     if choice.lower() in ["y", "yes", "quit"]:
         quit()
 
-def choose_from_list(prompt, options, rand = False, character = None, \
-    allowed = ["Help"]):
+def choose_from_list(prompt, options, rand = False, character = None, allowed = ["Help"]):
     """Accept user input from a list of options."""
-    choice = get_user_input(prompt, character, options = options + allowed)
+    # -- remove -- 
+    #print(type(options))
+    #print(options)
+    #print(list(options))
+    #print(dict(list(options)))
+    choice = get_user_input(prompt, character, options = (list(options)) + list(allowed))
     while choice.lower() not in [i.lower() for i in options]:
         if rand and choice.lower() == "random":
             return random.choice(options)
         send_to_console("Sorry, I didn't understand your choice. Try again?")
-        choice = get_user_input(prompt, character, options = options + allowed)
+        choice = get_user_input(prompt, character, options = (list(options) + list(allowed)))
     for i in options:
         if i.lower() == choice.lower():
             return i
@@ -99,7 +108,7 @@ def get_user_input(prompt, character = None, options = ["Quit"]):
     else:
         options = [i.lower() for i in options]
 
-    user_input = raw_input(color.BOLD + prompt + color.END)
+    user_input = input(color.BOLD + prompt + color.END)
     if "sheet" in options and character and user_input.lower() == "sheet":
         character.tellchar()
         return get_user_input(prompt, character = character, options = options)
@@ -116,7 +125,7 @@ def get_user_input(prompt, character = None, options = ["Quit"]):
 
 def send_to_console(*output):
     #sleep(0.5)
-    print ''.join(output)
+    print (''.join(output))
 
 def pq_help():
     """Open the help prompt and, y'know, help."""
