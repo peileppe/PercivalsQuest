@@ -13,7 +13,7 @@ from pq_combat import PQ_Combat
 from pq_puzzle import PQ_Puzzle
 from pq_equipment import pq_treasuregen, pq_item_worth, pq_gear, pq_magic
 from pq_utilities import choose_from_list, color, get_user_input, \
-    collapse_stringlist, save, send_to_console
+    collapse_stringlist, save, send_to_console, dict_return
 from pq_namegen import sandgen, godgen
 
 def display_itemlist(itemlist, sell = False):
@@ -38,10 +38,12 @@ def display_itemlist(itemlist, sell = False):
 class PQ_RPG(object):
     """RPG instance declaration"""
     def __init__(self, player):
+        """        
         def dict_return(pq): # required for python3
             k=list(pq)
             random.shuffle(k)
             return k[0]
+        """
         """Initialize the game session."""
         self.character = PQ_Character(self)
         self.player_name = player

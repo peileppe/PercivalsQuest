@@ -10,7 +10,7 @@ Declaration for Character object
 #  Part of Percival's Quest RPG
 
 from pq_namegen import web_namegen
-from pq_utilities import choose_from_list, collapse_stringlist, color, send_to_console
+from pq_utilities import choose_from_list, collapse_stringlist, color, send_to_console, dict_return
 from pq_equipment import pq_gear, pq_magic, pq_item_type, \
     pq_item_rating, pq_item_worth
 import random, textwrap, json
@@ -93,11 +93,11 @@ class PQ_Character(object):
                     break
         self.hitpoints = [self.stats[3], self.stats[3]]
         self.skillpoints = [self.stats[5], self.stats[5]]
-        self.gear['armor']['name'] = pq_gear['rarmor'][random.choice \
-            (pq_gear['rarmor'].keys())]['0']
+        self.gear['armor']['name'] = dict_return(pq_gear['rarmor'])
+        # pq_gear['rarmor'][random.choice (pq_gear['rarmor'].keys())]['0']
         self.gear['armor']['rating'] = 0
-        self.gear['weapon']['name'] = pq_gear['rweapon'][random.choice \
-            (pq_gear['rweapon'].keys())]['0']
+        self.gear['weapon']['name'] = dict_return(pq_gear['rweapon'])
+        # pq_gear['rweapon'][random.choice (pq_gear['rweapon'].keys())]['0']
         self.gear['weapon']['rating'] = 0
         self.gear['ring'] = ''
         self.combat['atk'] = [self.gear['weapon']['rating'], self.stats[0]]

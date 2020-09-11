@@ -20,6 +20,11 @@ try:
 except NameError:
     pass
 
+def dict_return(pq): # required for python3
+    k=list(pq)
+    random.shuffle(k)
+    return k[0]
+
 def collapse_stringlist(thelist, sortit = False, addcounts = False):
     """Remove duplicate elements from a list, 
     possibly sorting it in the process."""
@@ -39,6 +44,7 @@ def collapse_stringlist(thelist, sortit = False, addcounts = False):
 
 def atk_roll(attack, defense, attack_adjust = 0, defense_adjust = 0):
     """Handle any opposed roll ('attack' roll)."""
+    print(attack, defense, attack_adjust, defense_adjust)
     if attack[1] <= attack[0]:
         attack_result = attack[0] + attack_adjust
     else:
