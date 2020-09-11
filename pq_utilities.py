@@ -160,13 +160,11 @@ class color:
 savefile = os.path.expanduser("./saves/pq_saves")
 
 def save(rpg):
-    """Save it, baby!"""
     savedb = shelve.open(savefile)
     savedb[rpg.player_name] = rpg
     savedb.close()
     
 def load(rpg):
-    """Load it, baby!"""
     savedb = shelve.open(savefile)
     print('Saved Games:',savedb.keys())
     if rpg.player_name not in savedb:

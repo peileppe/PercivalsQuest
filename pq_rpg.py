@@ -38,7 +38,7 @@ def display_itemlist(itemlist, sell = False):
 class PQ_RPG(object):
     """RPG instance declaration"""
     def __init__(self, player):
-        def dict_return(pq):
+        def dict_return(pq): # required for python3
             k=list(pq)
             random.shuffle(k)
             return k[0]
