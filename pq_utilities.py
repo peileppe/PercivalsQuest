@@ -44,7 +44,7 @@ def collapse_stringlist(thelist, sortit = False, addcounts = False):
 
 def atk_roll(attack, defense, attack_adjust = 0, defense_adjust = 0):
     """Handle any opposed roll ('attack' roll)."""
-    print(attack, defense, attack_adjust, defense_adjust)
+    # print(attack, defense, attack_adjust, defense_adjust)
     if attack[1] <= attack[0]:
         attack_result = attack[0] + attack_adjust
     else:
