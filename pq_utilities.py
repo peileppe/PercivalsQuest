@@ -48,17 +48,15 @@ def atk_roll(attack, defense, attack_adjust = 0, defense_adjust = 0):
     if attack[1] <= attack[0]:
         attack_result = attack[0] + attack_adjust
     else:
-        attack_result = random.choice([random.randint(attack[0], attack[1]) \
-            for i in range(0,6)]) + attack_adjust    
+        attack_result = random.choice([random.randint(int(attack[0]), int(attack[1])) for i in range(0,6)]) + attack_adjust    
     if defense[1] <= defense[0]:
         defense_result = defense[0] + defense_adjust 
     else:
-        defense_result = random.choice([random.randint(defense[0], defense[1]) \
-            for i in range(0,6)]) + defense_adjust
+        defense_result = random.choice([random.randint(int(defense[0]), int(defense[1])) for i in range(0,6)]) + defense_adjust
     return attack_result - defense_result
 
 def confirm_quit():
-    """Do you really want to quit? DO YA, PUNK???"""
+    """Do you really want to quit? """
     send_to_console("Remember that your last save was the last time you rested.")
     choice = input("Are you sure you want to quit (y/n)? ")
     if choice.lower() in ["y", "yes", "quit"]:

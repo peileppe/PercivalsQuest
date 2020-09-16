@@ -61,13 +61,12 @@ def pq_treasuregen(level):
     if armor_chance <= level:
         itemtype = random.choice(list(pq_gear['armor'].keys())) # hack python3 dict 
         max_rating = min([level / 2, 5])
-        rating = 0 if max_rating < 1 else random.randint(0, max_rating)
+        rating = 0 if max_rating < 1 else random.randint(0, int(max_rating))
         magic_chance = random.randint(1, 10) #roll for magic
         magic = ''
         if magic_chance <= level:
             max_magic = min([level / 3, 3])
-            magic = pq_magic['rarmor'][itemtype].get(str(random.randint(0, \
-                max_magic)), '')
+            magic = pq_magic['rarmor'][itemtype].get(str(random.randint(0, int( max_magic) )), '')
             if magic: 
                 magic += ' '
         treasure['armor'] = magic + pq_gear['rarmor'][itemtype][str(rating)]
@@ -75,13 +74,12 @@ def pq_treasuregen(level):
     if weapon_chance <= level:
         itemtype = random.choice(list(pq_gear['weapon'].keys())) # hack python3 dict become list
         max_rating = min([level / 2, 5])
-        rating = 0 if max_rating < 1 else random.randint(0, max_rating)
+        rating = 0 if max_rating < 1 else random.randint(0, int(max_rating))
         magic_chance = random.randint(1, 10) #roll for magic
         magic = ''
         if magic_chance <= level:
             max_magic = min([level / 3, 3])
-            magic = pq_magic['rweapon'][itemtype].get(str(random.randint(0, \
-                max_magic)), '')
+            magic = pq_magic['rweapon'][itemtype].get(str(random.randint(0, int( max_magic))), '')
             if magic: 
                 magic += ' '
         treasure['weapon'] = magic + pq_gear['rweapon'][itemtype][str(rating)]

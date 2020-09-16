@@ -52,8 +52,7 @@ class PQ_Enemy(object):
             for i in range(0, lvl):
                 hpi = random.choice([random.randint(max([1, int(self.stats[3] / 2)]), self.stats[3]) for j in range(0, 6)])
                 self.hitpoints = [x + hpi for x in self.hitpoints]
-            spi = random.choice([random.randint(1, self.stats[5]) \
-                for j in range(0, 6)]) + 2 * (lvl - 1)
+            spi = random.choice([random.randint(1, int(self.stats[5]))  for j in range(0, 6)]) + 2 * (lvl - 1)
             self.skillpoints = [spi, spi]
             self.treasure = pq_treasuregen(lvl)
             self.combat['atk'] = [0, self.stats[0]]
@@ -67,16 +66,13 @@ class PQ_Enemy(object):
             for i in range(0, 6)])
         self.name = dragon_namegen(2, 6) + ' the ' + color + ' Dragon'
         for i in range(0, 6):
-            statroll = random.choice([random.randint(1, 6) \
-                for j in range(0, 6)])
+            statroll = random.choice([random.randint(1, 6) for j in range(0, 6)])
             self.stats[i] = statroll + lvl - 5
         self.skill = pq_dragonskill[color]
         for i in range(0, lvl):
-            hpi = random.choice([random.randint(max([1, self.stats[3] / 2]), \
-                self.stats[3]) for j in range(0, 6)])
+            hpi = random.choice([random.randint(max([1, int(self.stats[3] / 2)]), self.stats[3]) for j in range(0, 6)])
             self.hitpoints = [x + hpi for x in self.hitpoints]
-        spi = random.choice([random.randint(1, self.stats[5]) \
-            for j in range(0, 6)]) + 2 * (lvl - 1)
+        spi = random.choice([random.randint(1, int(self.stats[5]))  for j in range(0, 6)]) + 2 * (lvl - 1)
         self.skillpoints = [spi, spi]
         self.treasure = pq_treasuregen(lvl)
         self.combat['atk'] = [lvl / 3, self.stats[0]]
@@ -123,19 +119,16 @@ class PQ_Quest(PQ_Enemy):
         self.name = simple_namegen(2, 5).capitalize()
         self.description = monster_gen()
         for i in range(0, 6): 
-            statroll = random.choice([random.randint(1, 6) \
-                for j in range(0, 6)])
+            statroll = random.choice([random.randint(1, 6)  for j in range(0, 6)])
             self.stats[i] = statroll + lvl
         artifact = artygen().split(':')
         self.treasure['quest'] = artifact[0].strip()
         self.artifact = [a.strip() for a in artifact]
         self.skill = 'Cure'
         for i in range(0, lvl):
-            hpi = random.choice([random.randint(max([1, self.stats[3] / 2]), \
-                self.stats[3]) for j in range(0, 6)])
+            hpi = random.choice([random.randint(max([1, int(self.stats[3] / 2)]),  self.stats[3]) for j in range(0, 6)])
             self.hitpoints = [x + hpi for x in self.hitpoints]
-        spi = random.choice([random.randint(1, self.stats[5]) \
-            for j in range(0, 6)]) + 2 * (lvl - 1)
+        spi = random.choice([random.randint(1, int(self.stats[5])) for j in range(0, 6)]) + 2 * (lvl - 1)
         self.skillpoints = [spi, spi]
         self.combat['atk'] = [lvl / 2, self.stats[0]]
         self.combat['dfn'] = [lvl / 2, self.stats[1]]
