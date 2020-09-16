@@ -139,8 +139,7 @@ def pq_help():
         help_topics = json.load(f)
     send_to_console(textwrap.fill("Help topics: " + ", ".join(sorted(help_topics.keys())) + \
         "; Exit to return to game."))
-    topic = choose_from_list("Help> ", help_topics.keys() + ["Exit"], \
-        allowed = [])
+    topic = choose_from_list("Help> ", list(help_topics.keys()) + ["Exit"],  allowed = []) # hack python 3 dict
     while topic != "Exit":
         send_to_console(color.BOLD + "TOPIC: " + topic.upper() + color.END)
         if topic not in ["Armor", "Weapons", "Races", "Classes", "Feats"]:

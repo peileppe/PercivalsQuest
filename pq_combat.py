@@ -225,7 +225,7 @@ class PQ_Combat(object):
         skills_ok.append(self.enemy.skill == 'Poison' and self.turn >= 2 and \
             self.char.hitpoints[0] < self.char.hitpoints[1])
         if self.enemy.skillcounter < 0:
-            avail_skills = pq_dragonskill.values()
+            avail_skills = list(pq_dragonskill.values()) # hack python3 dict does not have remove anymore
             avail_skills.remove('Petrify')
             avail_skills.remove('Flee')
             avail_skills.remove('Poison')

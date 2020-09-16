@@ -59,7 +59,7 @@ def pq_treasuregen(level):
     treasure['gp'] = random.randint(0, 10*level) #roll for gp
     armor_chance = random.randint(1, 10) #roll for armor
     if armor_chance <= level:
-        itemtype = random.choice(pq_gear['armor'].keys())
+        itemtype = random.choice(list(pq_gear['armor'].keys())) # hack python3 dict 
         max_rating = min([level / 2, 5])
         rating = 0 if max_rating < 1 else random.randint(0, max_rating)
         magic_chance = random.randint(1, 10) #roll for magic
@@ -73,7 +73,7 @@ def pq_treasuregen(level):
         treasure['armor'] = magic + pq_gear['rarmor'][itemtype][str(rating)]
     weapon_chance = random.randint(1, 10) #roll for weapon
     if weapon_chance <= level:
-        itemtype = random.choice(pq_gear['weapon'].keys())
+        itemtype = random.choice(list(pq_gear['weapon'].keys())) # hack python3 dict become list
         max_rating = min([level / 2, 5])
         rating = 0 if max_rating < 1 else random.randint(0, max_rating)
         magic_chance = random.randint(1, 10) #roll for magic
@@ -87,5 +87,5 @@ def pq_treasuregen(level):
         treasure['weapon'] = magic + pq_gear['rweapon'][itemtype][str(rating)]
     ring_chance = random.randint(3, 15) #roll for ring
     if ring_chance <= level:
-        treasure['ring'] = random.choice(pq_magic['ring'].keys())
+        treasure['ring'] = random.choice(list(pq_magic['ring'].keys())) # hack python3 dict become list
     return treasure

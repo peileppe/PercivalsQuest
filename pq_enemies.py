@@ -46,13 +46,11 @@ class PQ_Enemy(object):
             self.name = random.choice(list(pq_monsters[str(lvl)].keys())) # making it into a list Python3 dict change
             this_monster = pq_monsters[str(lvl)][self.name]
             for i in range(0, 6):
-                stat_roll = random.choice([random.randint(1, 6) \
-                    for j in range(0, 6)])
+                stat_roll = random.choice([random.randint(1, 6)  for j in range(0, 6)])
                 self.stats[i] = stat_roll + this_monster['stat'][i]
             self.skill = this_monster['skill']
             for i in range(0, lvl):
-                hpi = random.choice([random.randint(max([1, \
-                    self.stats[3] / 2]), self.stats[3]) for j in range(0, 6)])
+                hpi = random.choice([random.randint(max([1, int(self.stats[3] / 2)]), self.stats[3]) for j in range(0, 6)])
                 self.hitpoints = [x + hpi for x in self.hitpoints]
             spi = random.choice([random.randint(1, self.stats[5]) \
                 for j in range(0, 6)]) + 2 * (lvl - 1)
