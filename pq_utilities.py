@@ -168,7 +168,7 @@ def save(rpg):
     
 def load(rpg):
     savedb = shelve.open(savefile)
-    print('Saved Games:',savedb.keys())
+    print('Saved Games:',list(savedb.keys()))
     if rpg.player_name not in savedb:
         savedb.close()
         return None
