@@ -249,7 +249,7 @@ def riddlegen(n = 1):
         riddles = json.load(f)
     riddle = []
     for i in range(n):
-        answer = random.choice([random.choice(riddles.keys())  for j in range(6)]) ## bug in python3
+        answer = random.choice([random.choice(list(riddles.keys()))  for j in range(6)]) ## bug in python3
         text = riddles[answer]
         riddle.append((answer, text))
     if n == 1:

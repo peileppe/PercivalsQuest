@@ -43,7 +43,7 @@ class PQ_Enemy(object):
             with open('data/pq_bestiary.json') as f:
                 pq_monsters = json.load(f)
             self.level = [lvl, lvl]
-            self.name = random.choice(pq_monsters[str(lvl)].keys())
+            self.name = random.choice(list(pq_monsters[str(lvl)].keys())) # making it into a list Python3 dict change
             this_monster = pq_monsters[str(lvl)][self.name]
             for i in range(0, 6):
                 stat_roll = random.choice([random.randint(1, 6) \
