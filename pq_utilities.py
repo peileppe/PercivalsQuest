@@ -144,8 +144,7 @@ def pq_help():
             send_to_console(textwrap.fill(help_topics[topic]))
         else:
             send_to_console(help_topics[topic])
-        topic = choose_from_list("Help> ", help_topics.keys() + ["Exit"], \
-            allowed = [])
+        topic = choose_from_list("Help> ", list(help_topics.keys()) + ["Exit"],  allowed = []) # hack python3 dict 
 
 class color:
     """Color ANSI codes"""
